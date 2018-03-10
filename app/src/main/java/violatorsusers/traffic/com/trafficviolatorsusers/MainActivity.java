@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         searchField = (EditText) findViewById(R.id.search_field);
         Logout = (Button) findViewById(R.id.sign_out_button);
         Search = (Button) findViewById(R.id.search_button);
-        reportView = (RecyclerView) findViewById(R.id.RecycleView);
         reportView.setHasFixedSize(true);
         reportView.setLayoutManager(new LinearLayoutManager(this));
         mAuth = FirebaseAuth.getInstance();
