@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "523255386290",
+    "firebase_url": "https://trafficviolators-f0e4c.firebaseio.com",
+    "project_id": "trafficviolators-f0e4c",
+    "storage_bucket": "trafficviolators-f0e4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523255386290:android:0f2a684a247b2fa9",
+        "android_client_info": {
+          "package_name": "violators.traffic.com.trafficviolators"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523255386290-ao2sn3b5usiqg6dsl3s8u7olb448khn5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "violators.traffic.com.trafficviolators",
+            "certificate_hash": "9e25ef768c83073eb1f3f2253d7d8c72062d74e9"
+          }
+        },
+        {
+          "client_id": "523255386290-jadnbogigcsj6bjrudr82esg610cd81s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGY6bCe3aPeDNsign1P2F_azEHwveHtV4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523255386290-jadnbogigcsj6bjrudr82esg610cd81s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523255386290:android:8e5eb46ead6e471f",
+        "android_client_info": {
+          "package_name": "violatorsusers.traffic.com.trafficviolatorsusers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523255386290-hj2h40utr13ptfmevj7ikc5140t92e3b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "violatorsusers.traffic.com.trafficviolatorsusers",
+            "certificate_hash": "9e25ef768c83073eb1f3f2253d7d8c72062d74e9"
+          }
+        },
+        {
+          "client_id": "523255386290-jadnbogigcsj6bjrudr82esg610cd81s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGY6bCe3aPeDNsign1P2F_azEHwveHtV4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523255386290-jadnbogigcsj6bjrudr82esg610cd81s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
