@@ -2,10 +2,13 @@ package violatorsusers.traffic.com.trafficviolatorsusers;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setReportList() {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.getText().toString());
+        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.toString());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,14 +86,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        reportView = (RecyclerView) findViewById(R.id.RecycleView);
         reportViewAdapter = new RecyclerViewAdapter(MainActivity.this,reportList);
         reportView.setHasFixedSize(true);
         reportView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         reportView.setItemAnimator(new DefaultItemAnimator());
-        searchField = findViewById(R.id.search_field);
-        Logout = findViewById(R.id.sign_out_button);
-        Search = findViewById(R.id.search_button);
-        reportView = findViewById(R.id.RecycleView);
+        searchField = (EditText) findViewById(R.id.search_field);
+        Logout = (Button) findViewById(R.id.sign_out_button);
+        Search = (Button) findViewById(R.id.search_button);
+        reportView = (RecyclerView) findViewById(R.id.RecycleView);
         reportView.setHasFixedSize(true);
         reportView.setLayoutManager(new LinearLayoutManager(this));
         mAuth = FirebaseAuth.getInstance();
