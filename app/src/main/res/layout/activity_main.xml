@@ -8,7 +8,7 @@
     tools:context="violatorsusers.traffic.com.trafficviolatorsusers.MainActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/search_field"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -27,23 +27,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/search_button"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="40dp"
-        android:autofillHints="@color/cardview_light_background"
         android:background="@color/cardview_light_background"
         android:text="@string/search_button"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sign-out_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/sign-out_button"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginTop="12dp"
         android:background="@color/cardview_light_background"
@@ -67,5 +66,15 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/search_field" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecycleView"
+        android:layout_width="382dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

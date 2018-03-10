@@ -22,9 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-/**
- * Demonstrate Firebase Authentication using a Google ID Token.
- */
+//Demonstrate Firebase Authentication using a Google ID Token.
 public class GoogleSignInActivity extends BaseActivity implements
         View.OnClickListener {
 
@@ -168,9 +166,10 @@ public class GoogleSignInActivity extends BaseActivity implements
         hideProgressDialog();
         if (user != null) {
 
-            Intent intent = new Intent(this,MainActivity.class);
+            /*Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
-            finish();
+            finish();*/
+            startActivity(new Intent(GoogleSignInActivity.this,MainActivity.class));
 
         } else {
             mStatusTextView.setText(R.string.signed_out);
