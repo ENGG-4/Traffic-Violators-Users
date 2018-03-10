@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setReportList() {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.toString());
+        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.getText().toString());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
