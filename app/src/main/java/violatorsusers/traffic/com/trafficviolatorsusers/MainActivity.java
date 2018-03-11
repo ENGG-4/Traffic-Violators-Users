@@ -46,16 +46,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void setReportList() {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.getText().toString());
+        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.getText().toString().toUpperCase());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 reportList.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String reportID = postSnapshot.getKey();
                     Report report = postSnapshot.getValue(Report.class);
                     String timeFormat = SimpleDateFormat.getTimeInstance(DateFormat.SHORT).format(report.getDatetime());
                     String dateFormat = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.FRENCH).format(report.getDatetime());
-                    ReportListItem item = new ReportListItem(report.getVehicleNo(),report.getReason(),"₹ " + String.valueOf(report.getFine()),dateFormat,timeFormat,getItemBackground(report.getReason()));
+                    ReportListItem item = new ReportListItem(reportID,
+                            report.getVehicleNo(),
+                            report.getReason(),
+                            "₹ " + String.valueOf(report.getFine()),
+                            report.isFinePaid(),
+                            dateFormat,
+                            timeFormat,
+                            getItemBackground(report.getReason()));
                     reportList.add(item);
                 }
                 reportView.setAdapter(reportViewAdapter);

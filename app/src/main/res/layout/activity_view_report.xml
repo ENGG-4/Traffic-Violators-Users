@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="violatorsusers.traffic.com.trafficviolatorsusers.ViewReportActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:id="@+id/img_photo"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:background="@color/colorOffWhite"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/img_photo">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/txt_view_img1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_vehicle_primary"/>
+
+            <TextView
+                android:id="@+id/txt_vehicleNoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/txt_view_img1"
+                android:text="Vehicle No"
+                android:textColor="@color/colorSecondaryText" />
+
+            <TextView
+                android:id="@+id/txt_vehicleNoValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_vehicleNoTitle"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/txt_view_img1"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+            <android.support.v4.widget.Space
+                android:id="@+id/space"
+                android:layout_width="5dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/txt_licenseNoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/space"
+                android:text="License No"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_licenseNoValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/space"
+                android:layout_below="@id/txt_licenseNoTitle"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorDivider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/txt_view_img2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_report_primary"/>
+
+            <TextView
+                android:id="@+id/txt_reasonTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/txt_view_img2"
+                android:text="Reason"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_reasonValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_reasonTitle"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/txt_view_img2"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorDivider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/txt_view_img5"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_fine_primary"/>
+
+            <TextView
+                android:id="@+id/txt_fineTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/txt_view_img5"
+                android:text="Fine"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_fineValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_fineTitle"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/txt_view_img5"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+            <android.support.v4.widget.Space
+                android:id="@+id/space5"
+                android:layout_width="5dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/txt_statusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/space5"
+                android:text="Payment Status"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_statusValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/space5"
+                android:layout_below="@id/txt_fineTitle"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorDivider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/txt_view_img3"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_time_primary"/>
+
+            <TextView
+                android:id="@+id/txt_dateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/txt_view_img3"
+                android:text="Date"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_dateValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/txt_timeValue"
+                android:layout_toEndOf="@+id/txt_view_img3"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+            <android.support.v4.widget.Space
+                android:id="@+id/space3"
+                android:layout_width="5dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/txt_timeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/space3"
+                android:text="Time"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_timeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/space3"
+                android:layout_below="@id/txt_timeTitle"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorDivider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/txt_view_img4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_description_primary"/>
+
+            <TextView
+                android:id="@+id/txt_descriptionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/txt_view_img4"
+                android:text="Description"
+                android:textColor="@color/colorSecondaryText"/>
+
+            <TextView
+                android:id="@+id/txt_descriptionValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_descriptionTitle"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/txt_view_img4"
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorDivider"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/status"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/img_photo"
+        android:layout_marginBottom="-24dp"
+        android:layout_marginEnd="16dp"/>
+
+</RelativeLayout>
+
+</ScrollView>

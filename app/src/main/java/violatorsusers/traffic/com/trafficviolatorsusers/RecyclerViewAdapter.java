@@ -1,6 +1,7 @@
 package violatorsusers.traffic.com.trafficviolatorsusers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,13 +36,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        ReportListItem reportItem = reportList.get(position);
+        final ReportListItem reportItem = reportList.get(position);
         holder.image.setBackgroundResource(reportItem.getPhoto());
         holder.vehicle.setText(reportItem.getVehicleNo());
         holder.reason.setText(reportItem.getReason());
         holder.date.setText(reportItem.getReportDate());
         holder.time.setText(reportItem.getReportTime());
         holder.fine.setText(reportItem.getFine());
+        holder.reportID.setText(reportItem.getReportID());
+
+        holder.listItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String reportID = reportItem.getReportID();
+                context.startActivity(new Intent(context,ViewReportActivity.class).putExtra("reportID",reportID));
+            }
+        });
     }
 
     @Override
@@ -55,8 +66,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView vehicle, reason, date,time,fine;
+        public TextView vehicle, reason, date,time,fine,reportID;
         public ImageView image;
+        public RelativeLayout listItem;
 
         public MyViewHolder(View view) {
             super(view);
@@ -66,6 +78,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             date = (TextView) view.findViewById(R.id.txt_item_date);
             time = (TextView) view.findViewById(R.id.txt_item_time);
             fine = (TextView) view.findViewById(R.id.txt_item_fine);
+            reportID = (TextView) view.findViewById(R.id.txt_reportID);
+            listItem = (RelativeLayout) view.findViewById(R.id.listItem);
         }
     }
 }

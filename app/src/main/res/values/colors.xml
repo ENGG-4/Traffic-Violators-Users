@@ -5,9 +5,11 @@
     <color name="colorPrimary_light">#FFECB3</color>
     <color name="colorAccent">#4CAF50</color>
     <color name="colorPrimary_text">#212121</color>
+    <color name="colorPrimaryText">#555555</color>
     <color name="colorSecondary_text">#757575</color>
     <color name="colorSecondaryText">#999999</color>
     <color name="colorIcons">#212121</color>
+    <color name="colorHint">#BDBDBD</color>
     <color name="colorDivider">#BDBDBD</color>
 
     <color name="grey_100">#F5F5F5</color>
@@ -15,4 +17,6 @@
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorOffWhite">#EEEEEE</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorRed">#f44336</color>
 </resources>

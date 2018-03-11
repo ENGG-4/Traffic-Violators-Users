@@ -10,6 +10,7 @@ public class Report {
     private String reason;
     private String description;
     private int fine;
+    private boolean finePaid;
     private Date datetime;
     private String photoURL;
 
@@ -22,6 +23,7 @@ public class Report {
         this.reason = reason;
         this.description = description;
         this.fine = fine;
+        this.finePaid = finePaid;
         this.datetime = datetime;
         this.photoURL = photoURL;
         this.userID = userID;
@@ -83,12 +85,12 @@ public class Report {
         this.datetime = datetime;
     }
 
-    public String getPhoto() {
-        return photoURL;
+    public boolean isFinePaid() {
+        return finePaid;
     }
 
-    public void setPhoto(String photoURL) {
-        this.photoURL = photoURL;
+    public void setFinePaid(boolean finePaid) {
+        this.finePaid = finePaid;
     }
 }
 
