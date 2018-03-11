@@ -18,8 +18,8 @@ android:weightSum="4">
         <ImageView
             android:id="@+id/google_icon"
             style="@style/ThemeOverlay.FirebaseIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="230dp"
             android:contentDescription="@string/desc_firebase_lockup"
             android:src="@drawable/logo" />
 
