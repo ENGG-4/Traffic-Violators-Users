@@ -29,12 +29,14 @@ android:weightSum="4">
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
             android:text="@string/google_title_text"
+            android:textColor="@color/colorPrimaryText"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
         <TextView
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
-            android:text="@string/signed_out" />
+            android:text="@string/signed_out"
+            android:textColor="@color/colorPrimaryText" />
 
     </LinearLayout>
 
