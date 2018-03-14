@@ -1,9 +1,14 @@
 package violatorsusers.traffic.com.trafficviolatorsusers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -166,9 +171,6 @@ public class GoogleSignInActivity extends BaseActivity implements
         hideProgressDialog();
         if (user != null) {
 
-            /*Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-            finish();*/
             startActivity(new Intent(GoogleSignInActivity.this,MainActivity.class));
 
         } else {
@@ -186,5 +188,23 @@ public class GoogleSignInActivity extends BaseActivity implements
         else {
             Toast.makeText(this, "Please Sign-in With Your Google Account", Toast.LENGTH_LONG).show();
         }
+    }
+
+    // On Pressing app the app will be closed completely
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setIcon(R.drawable.ic_alertdialog).setTitle("Exit")
+                .setMessage("Are you sure?")
+                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).setNegativeButton("no", null).show();
     }
 }
