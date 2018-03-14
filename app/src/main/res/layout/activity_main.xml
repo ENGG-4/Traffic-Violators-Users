@@ -60,7 +60,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecycleView"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:layout_below="@id/search_button"
         android:layout_marginTop="12dp" />
 </RelativeLayout>

@@ -10,7 +10,7 @@
     <color name="colorSecondaryText">#999999</color>
     <color name="colorIcons">#212121</color>
     <color name="colorHint">#BDBDBD</color>
-    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorDivider">#F6F6F6</color>
 
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>

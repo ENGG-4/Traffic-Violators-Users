@@ -81,6 +81,68 @@ tools:context="violatorsusers.traffic.com.trafficviolatorsusers.ViewReportActivi
                 android:textSize="18sp"
                 android:textAppearance="@android:style/TextAppearance.Material.Large"/>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="13dp"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/txt_view_img5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginRight="24dp"
+                    android:src="@drawable/ic_fine_primary" />
+
+                <TextView
+                    android:id="@+id/txt_fineTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/txt_view_img5"
+                    android:text="Fine"
+                    android:textColor="@color/colorSecondaryText" />
+
+                <TextView
+                    android:id="@+id/txt_fineValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_fineTitle"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@id/txt_view_img5"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    android:textSize="18sp" />
+
+                <android.support.v4.widget.Space
+                    android:id="@+id/space5"
+                    android:layout_width="5dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_statusTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/space5"
+                    android:text="Payment Status"
+                    android:textColor="@color/colorSecondaryText" />
+
+                <TextView
+                    android:id="@+id/txt_statusValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_fineTitle"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@id/space5"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
         </RelativeLayout>
 
         <View
@@ -125,65 +187,6 @@ tools:context="violatorsusers.traffic.com.trafficviolatorsusers.ViewReportActivi
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/colorDivider"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/txt_view_img5"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginRight="24dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_fine_primary"/>
-
-            <TextView
-                android:id="@+id/txt_fineTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/txt_view_img5"
-                android:text="Fine"
-                android:textColor="@color/colorSecondaryText"/>
-
-            <TextView
-                android:id="@+id/txt_fineValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_fineTitle"
-                android:layout_marginTop="4dp"
-                android:layout_toEndOf="@id/txt_view_img5"
-                android:textSize="18sp"
-                android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
-            <android.support.v4.widget.Space
-                android:id="@+id/space5"
-                android:layout_width="5dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/txt_statusTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/space5"
-                android:text="Payment Status"
-                android:textColor="@color/colorSecondaryText"/>
-
-            <TextView
-                android:id="@+id/txt_statusValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_toEndOf="@id/space5"
-                android:layout_below="@id/txt_fineTitle"
-                android:textSize="18sp"
-                android:textAppearance="@android:style/TextAppearance.Material.Large"/>
-
-        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
