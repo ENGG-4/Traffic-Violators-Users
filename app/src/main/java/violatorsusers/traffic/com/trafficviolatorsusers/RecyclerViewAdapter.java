@@ -78,8 +78,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             date = (TextView) view.findViewById(R.id.txt_item_date);
             time = (TextView) view.findViewById(R.id.txt_item_time);
             fine = (TextView) view.findViewById(R.id.txt_item_fine);
-            reportID = (TextView) view.findViewById(R.id.txt_reportID);
-            listItem = (RelativeLayout) view.findViewById(R.id.listItem);
+            reportID = (TextView) view.findViewById(R.id.txt_item_reportID);
+            listItem = (RelativeLayout) view.findViewById(R.id.list_item);
         }
     }
 }

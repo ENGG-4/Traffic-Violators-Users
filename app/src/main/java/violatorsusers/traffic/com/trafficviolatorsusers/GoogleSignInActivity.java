@@ -180,18 +180,6 @@ public class GoogleSignInActivity extends BaseActivity implements
     }
 
     @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.sign_in_button) {
-            signIn();
-        }
-        else {
-            Toast.makeText(this, "Please Sign-in With Your Google Account", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    // On Pressing app the app will be closed completely
-    @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this).setIcon(R.drawable.ic_alertdialog).setTitle("Exit")
                 .setMessage("Are you sure?")
@@ -205,5 +193,17 @@ public class GoogleSignInActivity extends BaseActivity implements
                         finish();
                     }
                 }).setNegativeButton("no", null).show();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.sign_in_button) {
+            signIn();
+        }
+        else {
+            Toast.makeText(this, "Please Sign-in With Your Google Account", Toast.LENGTH_LONG).show();
+        }
     }
 }
