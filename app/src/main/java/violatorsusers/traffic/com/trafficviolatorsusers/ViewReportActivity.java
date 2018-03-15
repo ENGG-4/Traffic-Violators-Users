@@ -62,7 +62,7 @@ public class ViewReportActivity extends AppCompatActivity {
         progressDialog.setMessage("Retrieving details...");
         progressDialog.show();
 
-        final StorageReference pathReference =   FirebaseStorage.getInstance().getReference().child("images/" + reportID);
+        final StorageReference pathReference =   FirebaseStorage.getInstance().getReference().child("images/reports/" + reportID);
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
         Query query = databaseRef.child("reports").child(reportID);
