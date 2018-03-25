@@ -16,7 +16,7 @@
     <color name="grey_300">#E0E0E0</color>
 
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorOffWhite">#EEEEEE</color>
+    <color name="colorOffWhite">#eeeeee</color>
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#f44336</color>
 </resources>

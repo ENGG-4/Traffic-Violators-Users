@@ -80,6 +80,6 @@
     <string name="hint_platenumber">Enter with no spaces eg-MH02CA1002</string>
     <string name="bookmarks_add">Bookmarks</string>
     <string name="new_bookmarktext">Add vehicle\'s plate number to bookmark it</string>
-    <string name="add_bookmarks">Add Bookmark</string>
+    <string name="add_bookmarks">Bookmark IT</string>
 </resources>
 
