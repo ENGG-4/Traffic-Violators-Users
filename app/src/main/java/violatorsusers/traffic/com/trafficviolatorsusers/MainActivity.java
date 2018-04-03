@@ -16,11 +16,15 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -42,74 +46,22 @@ public class MainActivity extends AppCompatActivity {
 //Firebase Sign-Out Logout Code Start
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
-    Button bookmarks;
-    ImageButton Search;
-    RecyclerView reportView;
-    EditText searchField;
-    private List<ReportListItem> reportList = new ArrayList<>();
-    private RecyclerViewAdapter reportViewAdapter;
+
+    List<ReportListItem> reportList;
+    RecyclerView recyclerView;
+    RecyclerViewAdapter reportAdapter;
+
+    List<String> vehicleList;
+    Spinner spinnerVehicle;
+    ArrayAdapter<String> adapter;
+
+    TextView emptyText;
 
     @Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
-
-    public void setReportList() {
-
-       final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Searching...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-        Query query = databaseRef.child("reports").orderByChild("vehicleNo").equalTo(searchField.getText().toString().toUpperCase());
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                reportList.clear();
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String reportID = postSnapshot.getKey();
-                    Report report = postSnapshot.getValue(Report.class);
-                    String timeFormat  = SimpleDateFormat.getTimeInstance(DateFormat.SHORT).format(report.getDatetime());
-                    String dateFormat = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.FRENCH).format(report.getDatetime());
-                    ReportListItem item = new ReportListItem(reportID,
-                            report.getVehicleNo(),
-                            report.getReason(),
-                            "₹ " + String.valueOf(report.getFine()),
-                            report.isFinePaid(),
-                            dateFormat,
-                            timeFormat,
-                            getItemBackground(report.getReason()));
-                    reportList.add(item);
-                }
-                if(reportList.size() == 0) {
-                    Toast.makeText(MainActivity.this, "No Records Found!", Toast.LENGTH_SHORT).show();
-                }
-                reportView.setAdapter(reportViewAdapter);
-                progressDialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public int getItemBackground(String reason)  {
-        if(reason.toLowerCase().equals("speed limit"))
-            return R.drawable.ic_speed;
-        else if(reason.toLowerCase().equals("drinking and driving"))
-            return R.drawable.ic_drink;
-        else if(reason.toLowerCase().equals("parking violations"))
-            return R.drawable.ic_parking;
-        else if(reason.toLowerCase().equals("jumping signal"))
-            return R.drawable.ic_signal;
-        else
-            return R.drawable.ic_default;
-    }
-
     // On Pressing app the app will be closed completely
     @Override
     public void onBackPressed() {
@@ -158,17 +110,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        reportView = (RecyclerView) findViewById(R.id.RecycleView);
-        reportViewAdapter = new RecyclerViewAdapter(MainActivity.this,reportList);
-        reportView.setHasFixedSize(true);
-        reportView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        reportView.setItemAnimator(new DefaultItemAnimator());
-        searchField = (EditText) findViewById(R.id.search_field);
-        bookmarks = (Button) findViewById(R.id.bookmarks);
-        Search = (ImageButton) findViewById(R.id.search_button);
-        reportView.setHasFixedSize(true);
-        reportView.setLayoutManager(new LinearLayoutManager(this));
-        mAuth = FirebaseAuth.getInstance();
+        emptyText = (TextView) findViewById(R.id.empty_view);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_reports);
+        reportList = new ArrayList<>();
+        reportAdapter = new RecyclerViewAdapter(this,reportList);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setReverseLayout(true);
+        manager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        vehicleList = new ArrayList<>();
+        spinnerVehicle = (Spinner) findViewById(R.id.sp_vehicleList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, vehicleList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVehicle.setAdapter(adapter);
+        getVehicleList();
 
         FloatingActionButton addBookmark = (FloatingActionButton) findViewById(R.id.add_bookmarks);
         addBookmark.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -187,26 +146,88 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        /*Logout.setOnClickListener(new View.OnClickListener() {
+        spinnerVehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                mAuth.signOut();
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                getReportList(vehicleList.get(position));
             }
-        });*/
-//Firebase Sign-Out Logout Code End
 
-        bookmarks.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,Bookmarks.class));
+            public void onNothingSelected(AdapterView<?> parentView) {
+
             }
         });
+    }
 
-        Search.setOnClickListener(new View.OnClickListener() {
+    public void getVehicleList() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bookmarks").child(FirebaseAuth.getInstance().getUid());
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                setReportList();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                vehicleList.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    vehicleList.add(postSnapshot.getValue().toString().toUpperCase());
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+    }
+
+    public void getReportList(String VehicleNo){
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("reports");
+        Query query = databaseRef.orderByChild("vehicleNo").equalTo(VehicleNo);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                reportList.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String reportID = postSnapshot.getKey();
+                    Report report = postSnapshot.getValue(Report.class);
+                    String timeFormat = SimpleDateFormat.getTimeInstance(DateFormat.SHORT).format(report.getDatetime());
+                    String dateFormat = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.FRENCH).format(report.getDatetime());
+                    ReportListItem item = new ReportListItem(reportID,
+                            report.getVehicleNo(),
+                            report.getReason(),
+                            "₹ " + String.valueOf(report.getFine()),
+                            report.isFinePaid(),
+                            dateFormat,
+                            timeFormat,
+                            getItemBackground(report.getReason()));
+                    ;
+                    reportList.add(item);
+                }
+                if(reportList.isEmpty()) {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyText.setVisibility(View.VISIBLE);
+                } else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    emptyText.setVisibility(View.GONE);
+                    recyclerView.setAdapter(reportAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public int getItemBackground(String reason) {
+        if(reason.toLowerCase().equals("speed limit"))
+            return R.drawable.ic_speed;
+        else if(reason.toLowerCase().equals("drinking and driving"))
+            return R.drawable.ic_drink;
+        else if(reason.toLowerCase().equals("parking violations"))
+            return R.drawable.ic_parking;
+        else if(reason.toLowerCase().equals("jumping signal"))
+            return R.drawable.ic_signal;
+        else
+            return R.drawable.ic_default;
     }
 }

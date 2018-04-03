@@ -24,7 +24,6 @@
         <activity android:name=".GoogleSignInActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ViewReportActivity" />
-        <activity android:name=".Bookmarks" />
         <activity android:name=".NewBookmark">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
