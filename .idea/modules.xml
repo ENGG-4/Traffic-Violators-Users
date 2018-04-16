@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Traffic-Violators-Users.iml" filepath="$PROJECT_DIR$/Traffic-Violators-Users.iml" />
+      <module fileurl="file://C:\Users\Jibin\Desktop\My Android Projects\TrafficViolatorsUsers\Traffic-Violators-Users.iml" filepath="C:\Users\Jibin\Desktop\My Android Projects\TrafficViolatorsUsers\Traffic-Violators-Users.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrafficViolatorsUsers.iml" filepath="$PROJECT_DIR$/TrafficViolatorsUsers.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

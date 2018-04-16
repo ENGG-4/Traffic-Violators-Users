@@ -77,6 +77,7 @@ public class NewBookmark extends AppCompatActivity {
                         for (String bookmark : toDelete) {
                             removeBookmark(bookmark);
                         }
+                        toDelete.clear();
                         actionMode.finish();
                         return true;
                     default:
@@ -105,7 +106,7 @@ public class NewBookmark extends AppCompatActivity {
 
     public void removeBookmark(final String bookmark) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bookmarks").child(FirebaseAuth.getInstance().getUid());
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
